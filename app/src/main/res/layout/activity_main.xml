@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aris.congklakgame2.MainActivity"
+    android:background="@drawable/wood">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="15dp"
+            android:text="CONGKLAK DIGITAL"
+            android:layout_gravity="center_horizontal|top"
+            android:textColor="#fff"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Mulai Permainan"
+            android:background="#eee"
+            tools:ignore="MissingConstraints">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnRule"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Cara Bermain"
+            android:background="#eee"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="196dp"
+            tools:layout_editor_absoluteY="160dp" />
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Keluar"
+            android:background="#eee"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="196dp"
+            tools:layout_editor_absoluteY="220dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

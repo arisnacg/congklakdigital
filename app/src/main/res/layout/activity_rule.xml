@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.aris.congklakgame2.RuleActivity"
+    android:background="@drawable/wood">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:textColor="#000"
+            android:text="Cara Bermain"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:text=
+                "1. Cara bermain congklak dengan memasukkan butir congklak ke rumah masing-masing dan berjalan searah dengan jarum jam."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:text=
+                "2. Permainan terus dilanjutkan sampai butir yang terakhir yang ada di daerah luar masuk ke dalam rumah sendiri atau lawan."/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:text=
+                "3. Jika butir terakhir masuk ke rumah sendiri, maka pemain dapat memilih kembali butir yang akan dijalankan hingga butir jatuh di daerah kosong."/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:text=
+                "4. Kemudian lawan mengambil giliran dan melanjutkan permainan."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#000"
+            android:text=
+                "5. Diakhir ini adalah penentuan, butir congklak dari rumah masing-masing di hitung. Pemanang adalah pemain yang memiliki butir paling banyak."/>
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="95dp"
+            android:src="@drawable/doorexit" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
