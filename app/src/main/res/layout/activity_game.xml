@@ -17,11 +17,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
-            <ImageView
+            <Button
+                android:id="@+id/btnPemain2"
+                android:text="PEMAIN 2"
+                android:textSize="20dp"
+                android:textColor="#fff"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="172dp"
-                android:src="@drawable/pemain1" />
+                android:background="#3895af"
+                android:layout_marginLeft="172dp"/>
 
             <ImageButton
                 android:id="@+id/btnRestart"
@@ -254,13 +258,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <Button
+                android:id="@+id/btnPemain1"
+                android:text="PEMAIN 1"
+                android:textSize="20dp"
+                android:textColor="#fff"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_marginLeft="172dp"
-                android:rotation="180"
-                android:src="@drawable/pemain2" />
+                android:background="#3895af"
+                android:layout_marginLeft="172dp"/>
 
             <ImageButton
                 android:id="@+id/btnBack"
