@@ -143,10 +143,14 @@ public class GameActivity extends Activity implements View.OnClickListener {
     public void ubahWarnaPemain(){
         if(this.gilPemail == 1){
             btnPemain1.setBackgroundColor(Color.parseColor("#FF18D15F"));
-            btnPemain2.setBackgroundColor(Color.parseColor("#3895af"));
+            btnPemain1.setTextColor(Color.parseColor("#FFFFFF"));
+            btnPemain2.setBackgroundColor(Color.parseColor("#CCCCCC"));
+            btnPemain2.setTextColor(Color.parseColor("#888888"));
         } else {
             btnPemain2.setBackgroundColor(Color.parseColor("#FF18D15F"));
-            btnPemain1.setBackgroundColor(Color.parseColor("#3895af"));
+            btnPemain2.setTextColor(Color.parseColor("#FFFFFF"));
+            btnPemain1.setBackgroundColor(Color.parseColor("#CCCCCC"));
+            btnPemain1.setTextColor(Color.parseColor("#888888"));
         }
     }
 
