@@ -170,6 +170,8 @@ public class GameActivity extends Activity implements View.OnClickListener {
         if(index != 7 || index != 15){
             int jmlBiji = arrLubang[index];
             arrLubang[index] = 0;
+            ////
+            arrBtn[index].setText(""+arrLubang[index]);
             int i = index;
             while(jmlBiji > 0){
                 //mengulang i dari 15 ke 0
@@ -183,7 +185,8 @@ public class GameActivity extends Activity implements View.OnClickListener {
                     if (pemain == 1) {
                         arrLubang[i] += 1;
                         jmlBiji -= 1;
-                        //arrBtn[i].setText(""+arrLubang[i]);
+                        //
+                        arrBtn[i].setText(""+arrLubang[i]);
                     } else {
                         continue;
                     }
@@ -193,12 +196,14 @@ public class GameActivity extends Activity implements View.OnClickListener {
                     } else {
                         arrLubang[i] += 1;
                         jmlBiji -= 1;
-                        //arrBtn[i].setText(""+arrLubang[i]);
+                        //
+                        arrBtn[i].setText(""+arrLubang[i]);
                     }
                 } else { //lainnya
                     arrLubang[i] += 1;
                     jmlBiji -= 1;
-                    //arrBtn[i].setText(""+arrLubang[i]);
+                    //
+                    arrBtn[i].setText(""+arrLubang[i]);
                     if(jmlBiji == 0 && arrLubang[i] != 1){
                         jmlBiji = arrLubang[i];
                         arrLubang[i] = 0;
@@ -223,9 +228,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
                     }
                 }
             } //end while
-            for(int k = 0; k < arrLubang.length; k++){
-                arrBtn[k].setText(""+ arrLubang[k]);
-            }
+//            for(int k = 0; k < arrLubang.length; k++){
+//                arrBtn[k].setText(""+ arrLubang[k]);
+//            }
         }
     }
 }
