@@ -1,8 +1,11 @@
 package com.example.aris.congklakgame2;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -21,6 +24,10 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     int[] arrLubang = new int[16];
     int gilPemail = 1;
+    int jmlBiji;
+    int indexBiji;
+    int defaultAngka = 1;
+    boolean game;
     Button[] arrBtn = new Button[16];
     Button btnPemain1, btnPemain2;
     ImageButton btnBack, btnReset;
@@ -71,35 +78,42 @@ public class GameActivity extends Activity implements View.OnClickListener {
     ///////////////////////////////////////////////////////////
     //Reset Game
     public void reset(){
-//        for(int i = 0; i < arrLubang.length; i++){
-//            arrLubang[i] = 7;
-//            if(i == 7 || i == 15)
-//                arrBtn[i].setText("0");
-//            else
-//                arrBtn[i].setText(""+arrLubang[i]);
-//        }
-        arrLubang[0] = 1;
-        arrLubang[1] = 1;
-        arrLubang[2] = 1;
-        arrLubang[3] = 1;
-        arrLubang[4] = 1;
-        arrLubang[5] = 1;
-        arrLubang[6] = 1;
-        arrLubang[7] = 0;
-        arrLubang[8] = 1;
-        arrLubang[9] = 1;
-        arrLubang[10] = 1;
-        arrLubang[11] = 1;
-        arrLubang[12] = 1;
-        arrLubang[13] = 1;
-        arrLubang[14] = 1;
-        arrLubang[15] = 0;
+        for(int i = 0; i < arrLubang.length; i++) {
+            if (i == 7 || i == 15) {
+                arrLubang[i] = 0;
+                arrBtn[i].setText("0");
+            } else {
+                arrLubang[i] = this.defaultAngka;
+                arrBtn[i].setText("" + arrLubang[i]);
+            }
+        }
+
+        this.game = true;
+
+//        arrLubang[0] = 1;
+//        arrLubang[1] = 1;
+//        arrLubang[2] = 1;
+//        arrLubang[3] = 1;
+//        arrLubang[4] = 1;
+//        arrLubang[5] = 1;
+//        arrLubang[6] = 1;
+//        arrLubang[7] = 0;
+//        arrLubang[8] = 1;
+//        arrLubang[9] = 1;
+//        arrLubang[10] = 1;
+//        arrLubang[11] = 1;
+//        arrLubang[12] = 1;
+//        arrLubang[13] = 1;
+//        arrLubang[14] = 1;
+//        arrLubang[15] = 0;
         for(int i = 0; i < arrLubang.length; i++){
             if(i == 7 || i == 15)
                 arrBtn[i].setText("0");
             else
                 arrBtn[i].setText(""+arrLubang[i]);
         }
+        this.gilPemail = 1;
+        ubahWarnaPemain();
     }
 
 
@@ -109,7 +123,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
             finish();
         } else if(v == btnReset){
             this.reset();
-        } else {
+        } else if(this.game){
             for (int i = 0; i < arrBtn.length; i++) {
                 if (v == arrBtn[i] && i != 7 && i != 15) {
                     boolean valid = false;
@@ -132,9 +146,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
                     }
                     if(valid) {
                         lubangDipilih(i, gilPemail);
-                        if (gilPemail == 1)
+                        if (gilPemail == 1 && !isKosong(0))
                             this.gilPemail = 0;
-                        else
+                        else if(gilPemail == 0 && !isKosong(1))
                             this.gilPemail = 1;
                         ubahWarnaPemain();
                     }
@@ -157,8 +171,24 @@ public class GameActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    public void delay(final int index){
-
+    public boolean isKosong(int pemain){
+        boolean kosong = true;
+        if(pemain == 1){
+            for(int i = 0; i < 7; i++){
+                if(arrLubang[i] != 0){
+                    kosong = false;
+                    break;
+                }
+            }
+        } else {
+            for(int i = 8; i < 15; i++){
+                if(arrLubang[i] != 0){
+                    kosong = false;
+                    break;
+                }
+            }
+        }
+        return kosong;
     }
 
     public void ubahWarnaButton(int i){
@@ -175,11 +205,12 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     public void lubangDipilih(int index, int pemain){
         if(index != 7 || index != 15){
-            int jmlBiji = arrLubang[index];
+            this.jmlBiji = arrLubang[index];
             arrLubang[index] = 0;
             arrBtn[index].setText(""+arrLubang[index]);
+            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT);
             int i = index;
-            while(jmlBiji > 0){
+            while(this.jmlBiji > 0){
                 //mengulang i dari 15 ke 0
                 if(i < 15)
                     i += 1;
@@ -189,9 +220,13 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 //mengecek i ada di lubang 8 atau 16
                 if(i == 7){ //jika di lubang ke-8
                     if (pemain == 1) {
+                        Log.d("biji di tangan sebelum lubang 7", ""+this.jmlBiji);
                         arrLubang[i] += 1;
-                        jmlBiji -= 1;
+                        this.jmlBiji -= 1;
+                        //delay(i);
                         arrBtn[i].setText(""+arrLubang[i]);
+                        Log.d("biji di tangan sesudah lubang 7", ""+this.jmlBiji);
+                        break;
                     } else {
                         continue;
                     }
@@ -199,45 +234,86 @@ public class GameActivity extends Activity implements View.OnClickListener {
                     if(pemain == 1){
                         continue;
                     } else {
+                        Log.d("biji di tangan sebelum lubang 15", ""+this.jmlBiji);
                         arrLubang[i] += 1;
-                        jmlBiji -= 1;
+                        this.jmlBiji -= 1;
+                        //delay(i);
                         arrBtn[i].setText(""+arrLubang[i]);
+                        Log.d("biji di tangan sesudah lubang 15", ""+this.jmlBiji);
+                        break;
                     }
                 } else { //lainnya
+                    Log.d("biji di tangan sesudah lubang selain 7 dan 15", ""+this.jmlBiji);
                     arrLubang[i] += 1;
-                    jmlBiji -= 1;
-                    delay(i);
-                    //arrBtn[i].setText(""+arrLubang[i]);
-                    if(jmlBiji == 0 && arrLubang[i] != 1){
-                        jmlBiji = arrLubang[i];
+                    this.jmlBiji -= 1;
+                    //delay(i);
+                    arrBtn[i].setText(""+arrLubang[i]);
+                    if(this.jmlBiji == 0 && arrLubang[i] != 1){
+                        this.jmlBiji = arrLubang[i];
                         arrLubang[i] = 0;
-                    } else {
-                        if(this.gilPemail == 1){
+                        arrBtn[i].setText(""+arrLubang[i]);
+                    }
+                    if(this.jmlBiji == 0){
+                        if(pemain == 1){
+                            //Log.v("coba", "test");
                             for(int j = 0; j <= 6; j++){
+                                //Log.v("coba", "j => "+j);
                                 if(i == j){
                                     arrLubang[7] += arrLubang[14-i];
+                                    arrBtn[7].setText(""+arrLubang[7]);
                                     arrLubang[14-i] = 0;
+                                    arrBtn[14-i].setText(""+arrLubang[14-i]);
                                     break;
                                 }
                             }
                         } else {
-                            for(int j = 8; j <= 14; j++){
-                                if(i == j){
-                                    arrLubang[14] += arrLubang[14-i];
-                                    arrLubang[14-i] = 0;
+                            for (int j = 8; j <= 14; j++) {
+                                if (i == j) {
+                                    arrLubang[15] += arrLubang[14 - i];
+                                    arrBtn[15].setText("" + arrLubang[15]);
+                                    arrLubang[14 - i] = 0;
+                                    arrBtn[14 - i].setText("" + arrLubang[14 - i]);
                                     break;
                                 }
-
-
-
                             }
                         }
                     }
                 }
+                Log.d("biji di tangan fix selesai", ""+this.jmlBiji);
             } //end while
-//            for(int k = 0; k < arrLubang.length; k++){
-//                arrBtn[k].setText(""+ arrLubang[k]);
+            if(arrLubang[7] + arrLubang[15] == this.defaultAngka*14){
+                this.game = false;
+                String hasil = "Seri";
+                if(arrLubang[7] > arrLubang[15]){
+                    hasil = "Pemain 1 Menang";
+                } else if(arrLubang[7] < arrLubang[15]){
+                    hasil = "Pemain 2 Menang";
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(hasil)
+                        .setCancelable(false)
+                        .setPositiveButton("Ulang", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                reset();
+                                dialogInterface.cancel();
+                            }
+                        }).setNegativeButton("Kembali", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.setTitle("Game Over");
+                alert.show();
+
+            }
+//
+//            for(int k = 0; k < 16; k++){
+//                Log.d("k-"+k, ""+arrLubang[k]);
 //            }
+
         }
     }
 }

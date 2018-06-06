@@ -60,12 +60,13 @@
                 "5. Diakhir ini adalah penentuan, butir congklak dari rumah masing-masing di hitung. Pemanang adalah pemain yang memiliki butir paling banyak."/>
 
         <ImageButton
-            android:id="@+id/btnBack"
+            android:id="@+id/btnKembali"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
             android:layout_marginLeft="95dp"
-            android:src="@drawable/doorexit" />
+            android:src="@drawable/doorexit"
+            android:onClick="kembali"/>
 
 
     </LinearLayout>
